@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonMLBasics", "PythonMLBasics\PythonMLBasics.pyproj", "{FB8396DC-DF0B-455F-9FE7-AFFD161AE3CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB8396DC-DF0B-455F-9FE7-AFFD161AE3CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB8396DC-DF0B-455F-9FE7-AFFD161AE3CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAD58579-249C-4A9E-A3D9-C64363203FE6}
+	EndGlobalSection
+EndGlobal
