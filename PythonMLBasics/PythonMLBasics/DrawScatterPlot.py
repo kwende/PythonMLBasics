@@ -12,13 +12,13 @@ for i in range(0, len(random_y)):
         random_y[i] = abs(random_y[i])
 
 slope = 2
-for i in range(0, 190):
+for i in range(0, 145):
     print(i)
     sum = 0
     for x in range(0, len(random_y)):
         err = ((x * slope) - random_y[x]) * x
         sum = sum + err
-    error = sum / len(random_y)
+    error = 2 * (sum / len(random_y))
     slope = slope - (.00001 * error)
 
     plt.scatter(x = xRange, y = random_y)
