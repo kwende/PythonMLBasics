@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>fb8396dc-df0b-455f-9fe7-affd161ae3cd</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>DrawScatterPlot.py</StartupFile>
+    <StartupFile>Example2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DrawScatterPlot.py">
+    <Compile Include="Example2.py" />
+    <Compile Include="Example1.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
