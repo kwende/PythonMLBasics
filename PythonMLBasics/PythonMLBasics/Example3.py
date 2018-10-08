@@ -5,6 +5,9 @@ np.random.seed(22)
 
 treeTypeA = np.array([np.random.normal(100, 25) for _ in range(0,5000)])
 treeTypeB = np.array([np.random.normal(300, 15) for _ in range(0,5000)])
+combined = np.append(treeTypeA, treeTypeB)
+
+max = np.amax(treeTypeA)
 
 def Accuracy(typeA, typeB, m, b):
     numRight = ((typeA * m + b) < 0).sum()
@@ -52,11 +55,9 @@ while True:
 print("Took " + str(k) + " iterations")
 print("y = " + str(m) + "x + " + str(b))
 
-treeTypeAHist = np.histogram(treeTypeA, bins=100)
-treeTypeBHist = np.histogram(treeTypeB, bins=100)
+classes = np.apply_along_axis(lambda x: m * x + b, 0, combined)
+classesHist = np.histogram(classes, bins=2)
 
-
-plt.bar(treeTypeAHist[1][0:len(treeTypeAHist[1]) - 1], treeTypeAHist[0])
-plt.bar(treeTypeBHist[1][0:len(treeTypeBHist[1]) - 1], treeTypeBHist[0])
+plt.bar(classesHist[1][0:len(classesHist[1]) - 1], classesHist[0])
 plt.show()
 #plt.scatter(x = xRange, y = random_y)
