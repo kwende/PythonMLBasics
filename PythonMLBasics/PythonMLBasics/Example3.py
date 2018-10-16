@@ -19,19 +19,13 @@ m = 1
 b = 1
 k = 0
 lastAccuracy = 0
+
+mHistory = []
+
 while True:
 
-    treeTypeAMapped = treeTypeA * m + b
-    treeTypeAMapped = np.piecewise(treeTypeAMapped, [treeTypeAMapped < 0, treeTypeAMapped >= 0], [-1, 1])
-
-    treeTypeBMapped = treeTypeB * m + b
-    treeTypeBMapped = np.piecewise(treeTypeBMapped, [treeTypeBMapped < 0, treeTypeBMapped >= 0], [-1, 1])
-        
-    mSum = np.sum((treeTypeAMapped - -1) * treeTypeA) + np.sum((treeTypeBMapped - 1) * treeTypeB)
-    bSum = np.sum(treeTypeAMapped - -1) + np.sum(treeTypeBMapped - 1)
-
-    #mSum = np.sum(((treeTypeA * m + b) - -1) * treeTypeA) + np.sum(((treeTypeB * m + b) - 1) * treeTypeB)
-    #bSum = np.sum((treeTypeA * m + b) - -1 ) + np.sum((treeTypeB * m + b) - 1 )
+    mSum = np.sum(((treeTypeA * m + b) - -1) * treeTypeA) + np.sum(((treeTypeB * m + b) - 1) * treeTypeB)
+    bSum = np.sum((treeTypeA * m + b) - -1 ) + np.sum((treeTypeB * m + b) - 1 )
 
     mErr = 2 * (mSum / (len(treeTypeA) + len(treeTypeB)))
     bErr = 2 * (bSum / (len(treeTypeA) + len(treeTypeB)))
@@ -55,9 +49,11 @@ while True:
 print("Took " + str(k) + " iterations")
 print("y = " + str(m) + "x + " + str(b))
 
-classes = np.apply_along_axis(lambda x: m * x + b, 0, combined)
-classesHist = np.histogram(classes, bins=2)
+#plt.scatter(x = np.arange(0, len(mHistory)), y = mHistory)
 
-plt.bar(classesHist[1][0:len(classesHist[1]) - 1], classesHist[0])
-plt.show()
+#classes = np.apply_along_axis(lambda x: m * x + b, 0, combined)
+#classesHist = np.histogram(classes, bins=2)
+
+#plt.bar(classesHist[1][0:len(classesHist[1]) - 1], classesHist[0])
+#plt.show()
 #plt.scatter(x = xRange, y = random_y)
