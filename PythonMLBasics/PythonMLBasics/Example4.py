@@ -22,16 +22,25 @@ lastAccuracy = 0
 
 mHistory = []
 
+def sigma(em, bee, x):
+    return 1 / (1 + np.exp(-1 * (em * x + bee)))
+
+def rhs_theta(em, bee, x, y):
+    return np.sum((sigma(em, bee, x) - y) * (sigma(em, bee, x) * (1 - sigma(em, bee, x)) * x))
+
+def rhs_b(em, bee, x, y):
+    return np.sum((sigma(em, bee, x) - y) * (sigma(em, bee, x) * (1 - sigma(em, bee, x))))
+
 while True:
 
-    mSum = np.sum(((treeTypeA * m + b) - -1) * treeTypeA) + np.sum(((treeTypeB * m + b) - 1) * treeTypeB)
-    bSum = np.sum((treeTypeA * m + b) - -1 ) + np.sum((treeTypeB * m + b) - 1 )
+    mSum = rhs_theta(m, b, treeTypeA, -1) + rhs_theta(m, b, treeTypeB, 1)
+    bSum = rhs_b(m, b, treeTypeA, -1) + rhs_b(m, b, treeTypeB, 1)
 
     mErr = 2 * (mSum / (len(treeTypeA) + len(treeTypeB)))
     bErr = 2 * (bSum / (len(treeTypeA) + len(treeTypeB)))
 
-    m = (m - mErr * .00001)
-    b = (b - bErr * .00001)
+    m = (m - mErr * .001)
+    b = (b - bErr * .001)
 
     accuracy = Accuracy(treeTypeA, treeTypeB, m, b)
 
@@ -48,12 +57,3 @@ while True:
 
 print("Took " + str(k) + " iterations")
 print("y = " + str(m) + "x + " + str(b))
-
-#plt.scatter(x = np.arange(0, len(mHistory)), y = mHistory)
-
-#classes = np.apply_along_axis(lambda x: m * x + b, 0, combined)
-#classesHist = np.histogram(classes, bins=2)
-
-#plt.bar(classesHist[1][0:len(classesHist[1]) - 1], classesHist[0])
-#plt.show()
-#plt.scatter(x = xRange, y = random_y)
